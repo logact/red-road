@@ -1,0 +1,1 @@
+This product is meaning to collect user's thoughts and break down the big goals to executable jobs by intelligent agent, then it will send these jobs to user according to user's status(mood or capacity),and it will receive the user's feedback,and collect information of user's behaviour to improve how to break down  the goals to the actions and how to arrange these actions.
