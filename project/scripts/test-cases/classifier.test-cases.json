@@ -1,0 +1,64 @@
+{
+  "testCases": [
+    {
+      "id": "test-1",
+      "input": "I'm tired",
+      "expected": "INCUBATOR",
+      "description": "Acceptance criteria: Emotional/reflective statement"
+    },
+    {
+      "id": "test-2",
+      "input": "Build a bot",
+      "expected": "GATEKEEPER",
+      "description": "Acceptance criteria: Clear intent/ambition"
+    },
+    {
+      "id": "test-3",
+      "input": "I feel stuck",
+      "expected": "INCUBATOR",
+      "description": "Clear emotional state"
+    },
+    {
+      "id": "test-4",
+      "input": "I'm overwhelmed",
+      "expected": "INCUBATOR",
+      "description": "Emotional state"
+    },
+    {
+      "id": "test-5",
+      "input": "I want to create a website",
+      "expected": "GATEKEEPER",
+      "description": "Clear intent to build something"
+    },
+    {
+      "id": "test-6",
+      "input": "Launch a product",
+      "expected": "GATEKEEPER",
+      "description": "Clear ambition/goal"
+    },
+    {
+      "id": "test-7",
+      "input": "How do I build X?",
+      "expected": "GATEKEEPER",
+      "description": "Question about building/creating"
+    },
+    {
+      "id": "test-8",
+      "input": "I want to feel better",
+      "expected": "INCUBATOR",
+      "description": "Ambiguous but primarily about emotional state"
+    },
+    {
+      "id": "test-9",
+      "input": "I'm tired but I need to build something",
+      "expected": "GATEKEEPER",
+      "description": "Mixed statement - prioritize intent over emotion"
+    },
+    {
+      "id": "test-10",
+      "input": "Do something",
+      "expected": "GATEKEEPER",
+      "description": "Vague intent but still an action-oriented statement"
+    }
+  ]
+}

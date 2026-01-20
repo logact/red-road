@@ -76,3 +76,4 @@
 2.  **Type Safety:** Never use `any`. Always define interfaces in `types/volition.ts` first.
 3.  **Mobile First:** All UI components must be touch-friendly (min-height 44px for buttons).
 4.  **Offline Awareness:** Use `navigator.onLine` checks before submitting complex Architect requests.
+5. When refer to items related to the version,please check if it's compitiable with current context.

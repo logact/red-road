@@ -72,20 +72,17 @@ cat .env.local
 
 Make sure both `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` are present.
 
-## Step 5: Build and Start
+## Step 5: Start Development Server
 
-You're now ready to build and start the project:
+For development, simply run:
 
 ```bash
-# Development mode
 npm run dev
-
-# Production build
-npm run build
-npm start
 ```
 
-The app will be available at `http://localhost:3000`
+The app will be available at `http://localhost:3000` with hot reload enabled.
+
+> **Note:** Use `npm run dev` for development. The `npm start` command is for production mode and requires running `npm run build` first.
 
 ## Troubleshooting
 

@@ -26,21 +26,21 @@
 ### Milestone 1: The Iron Skeleton (Foundation)
 *Goal: A running Next.js PWA connected to Supabase with Auth.*
 
-| ID | Feature | Status | Criteria Checklist (Must Pass) | Notes / Blockers |
-| :--- | :--- | :--- | :--- | :--- |
-| **1.1** | **Project Scaffold** | 🔴 | <ul><li>[ ] App loads at `localhost:3000`</li><li>[ ] PWA Manifest is valid (Chrome Audit)</li></ul> | |
-| **1.2** | **Supabase Schema** | 🔴 | <ul><li>[ ] Tables created: `goals`, `milestones`, `jobs`</li><li>[ ] RLS Policies active</li></ul> | |
-| **1.3** | **Type Sync** | 🔴 | <ul><li>[ ] `types/volition.ts` matches DB exacty</li><li>[ ] No `any` types used</li></ul> | |
-| **1.4** | **Auth UI** | 🔴 | <ul><li>[ ] Protected Route redirects unauth users</li><li>[ ] Login/Logout works</li></ul> | |
+| ID      | Feature              | Status | Criteria Checklist (Must Pass)                                                                       | Notes / Blockers |
+| :------ | :------------------- | :----- | :--------------------------------------------------------------------------------------------------- | :--------------- |
+| **1.1** | **Project Scaffold** | 🔴     | <ul><li>[ ] App loads at `localhost:3000`</li><li>[ ] PWA Manifest is valid (Chrome Audit)</li></ul> | done             |
+| **1.2** | **Supabase Schema**  | 🔴     | <ul><li>[ ] Tables created: `goals`, `milestones`, `jobs`</li><li>[ ] RLS Policies active</li></ul>  | done             |
+| **1.3** | **Type Sync**        | 🔴     | <ul><li>[ ] `types/volition.ts` matches DB exacty</li><li>[ ] No `any` types used</li></ul>          | done             |
+| **1.4** | **Auth UI**          | 🔴     | <ul><li>[ ] Protected Route redirects unauth users</li><li>[ ] Login/Logout works</li></ul>          | done             |
 
 ### Milestone 2: The Gatekeeper (Intent Validation)
 *Goal: Filter "Noise" from "Intent".*
 
-| ID | Feature | Status | Criteria Checklist (Must Pass) | Notes / Blockers |
-| :--- | :--- | :--- | :--- | :--- |
-| **2.1** | **The Classifier** | 🔴 | <ul><li>[ ] "Sad" -> Incubator</li><li>[ ] "Build X" -> Gatekeeper</li></ul> | |
-| **2.2** | **Wishful Check** | 🔴 | <ul><li>[ ] Vague goals trigger "Challenge"</li><li>[ ] Valid goals save as `PENDING_SCOPE`</li></ul> | |
-| **2.3** | **Intent UI** | 🔴 | <ul><li>[ ] Red Alert box works</li><li>[ ] "Next" button unlocks only on success</li></ul> | |
+| ID      | Feature            | Status | Criteria Checklist (Must Pass)                                                                        | Notes / Blockers                                                                                                                                                                                  |
+| :------ | :----------------- | :----- | :---------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **2.1** | **The Classifier** | 🔴     | <ul><li>[ ] "Sad" -> Incubator</li><li>[ ] "Build X" -> Gatekeeper</li></ul>                          | done.<br>blocked on the selection of Model provider for a while, and take some time to optimize the prompt to pass vague case (add the critical rule that describe how to handle the vague case). |
+| **2.2** | **Wishful Check**  | 🔴     | <ul><li>[ ] Vague goals trigger "Challenge"</li><li>[ ] Valid goals save as `PENDING_SCOPE`</li></ul> |                                                                                                                                                                                                   |
+| **2.3** | **Intent UI**      | 🔴     | <ul><li>[ ] Red Alert box works</li><li>[ ] "Next" button unlocks only on success</li></ul>           |                                                                                                                                                                                                   |
 
 ### Milestone 3: The Adaptive Architect (Scoping & Planning)
 *Goal: Establish Scope -> Size -> Plan.*
@@ -56,11 +56,11 @@
 ### Milestone 4: The Action Engine (Execution)
 *Goal: The Interface. "Compass, not Map."*
 
-| ID | Feature | Status | Criteria Checklist (Must Pass) | Notes / Blockers |
-| :--- | :--- | :--- | :--- | :--- |
-| **4.1** | **Energy Filter** | 🔴 | <ul><li>[ ] "Low Energy" hides Blue cards</li><li>[ ] Instant toggle (no reload)</li></ul> | |
-| **4.2** | **Crisis Override** | 🔴 | <ul><li>[ ] Deadline < 24h shows regardless of filter</li><li>[ ] Visual "Urgent" badge</li></ul> | |
-| **4.3** | **Job Actions** | 🔴 | <ul><li>[ ] "Done" fades out card</li><li>[ ] "Failed" increments counter</li></ul> | |
+| ID      | Feature             | Status | Criteria Checklist (Must Pass)                                                                    | Notes / Blockers |
+| :------ | :------------------ | :----- | :------------------------------------------------------------------------------------------------ | :--------------- |
+| **4.1** | **Energy Filter**   | 🔴     | <ul><li>[ ] "Low Energy" hides Blue cards</li><li>[ ] Instant toggle (no reload)</li></ul>        |                  |
+| **4.2** | **Crisis Override** | 🔴     | <ul><li>[ ] Deadline < 24h shows regardless of filter</li><li>[ ] Visual "Urgent" badge</li></ul> |                  |
+| **4.3** | **Job Actions**     | 🔴     | <ul><li>[ ] "Done" fades out card</li><li>[ ] "Failed" increments counter</li></ul>               |                  |
 
 ### Milestone 5: The Recalibrator (Self-Healing)
 *Goal: Repair broken plans.*

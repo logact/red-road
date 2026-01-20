@@ -8,7 +8,7 @@ Before writing or editing any code, you MUST ingest the context in the following
 
 ### Tier 1: Global Context (Read-Only Foundation)
 * **Product Vision:** Always refer to `context/bg-product.md` to understand *why* we are building this and the core user value.
-* **Tech Stack:** Always refer to `context/bg-techspec.md` for allowed libraries, architecture patterns, and coding standards. **Do not deviate from this stack.**
+* **Tech Stack:** Always refer to `context/bg-techspec.md` for allowed libraries, architecture patterns, and coding standards. **Do not deviat e from this stack.**
 
 ### Tier 2: Dynamic Context (The "Now")
 * **Active Feature:** Read `context/cur-feature.md` to understand the specific task or feature currently being implemented.
@@ -30,5 +30,10 @@ Before writing or editing any code, you MUST ingest the context in the following
 * **Dry & Modular:** Follow the patterns found in `project/`.
 * **Comments:** Add comments only for complex logic, referencing the "Why" from `bg-product.md` if necessary.
 
+## 5. Temporal Awareness
+* **Strict Date Check:** Before generating any file with a date (like changelogs, status updates, or headers), you MUST run the terminal command `date` to confirm the current day.
+* **Never Guess:** Do not rely on your internal training data for the current year or month.
+
 ---
 *End of Instructions*
+
