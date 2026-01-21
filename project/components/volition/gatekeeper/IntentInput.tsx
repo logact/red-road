@@ -31,7 +31,8 @@ export function IntentInput() {
       if (result === "INCUBATOR") {
         router.push("/incubator");
       } else if (result === "GATEKEEPER") {
-        router.push("/gatekeeper");
+        // Pass the input as the goal parameter
+        router.push(`/gatekeeper?goal=${encodeURIComponent(input.trim())}`);
       }
     } catch (err) {
       setError(

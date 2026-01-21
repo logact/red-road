@@ -12,6 +12,13 @@ Foundation built and authentication working
 - TypeScript types fully aligned with database schema
 - Database operation helper types (Insert/Update) available for all tables
 - Integered With LLM(Deepseek) and pass the test of classifier function.
+- Implemented feature2.2
+- Finished feature 2.3  **Stress Test Generator (Logic)**
+- Finished feature 2.5 **Scoring & Decision (Logic)** 
+- Finished feature 2.4 **Stress Test Form (UI)**
+- Finished feature 2.5 **Scoring & Decision (Logic)**
+- Finished feature 2.6 **Trial Generator (Logic)**
+- Finish all features of phase2 achieve Milestone 2: The Gatekeeper (Intent Validation)
 
 ## Migration Status:
 - ✅ Migration file: `project/supabase/migrations/001_initial_schema.sql`

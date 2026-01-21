@@ -1,0 +1,34 @@
+{
+  "testCases": [
+    {
+      "id": "test-1",
+      "goalTitle": "Build a Telegram bot",
+      "description": "Acceptance criteria: Technical project goal - should generate specific questions about bot development"
+    },
+    {
+      "id": "test-2",
+      "goalTitle": "Learn Spanish",
+      "description": "Acceptance criteria: Learning goal - should generate questions about language learning commitment"
+    },
+    {
+      "id": "test-3",
+      "goalTitle": "Start a SaaS business",
+      "description": "Acceptance criteria: Business goal - should generate questions about entrepreneurship commitment"
+    },
+    {
+      "id": "test-4",
+      "goalTitle": "Write a novel",
+      "description": "Acceptance criteria: Creative goal - should generate questions about writing commitment"
+    },
+    {
+      "id": "test-5",
+      "goalTitle": "Get in shape",
+      "description": "Acceptance criteria: Health goal - should generate questions about fitness commitment"
+    },
+    {
+      "id": "test-6",
+      "goalTitle": "Build a mobile app for task management",
+      "description": "Acceptance criteria: Complex technical goal - should generate specific, detailed questions"
+    }
+  ]
+}

@@ -10,7 +10,10 @@
     "lint": "next lint",
     "verify-schema": "tsx scripts/verify-schema.ts",
     "check-build": "node scripts/check-build-state.js",
-    "test:classifier": "tsx scripts/test-classifier.ts"
+    "test:classifier": "tsx scripts/test-classifier.ts",
+    "test:stress-test-generator": "tsx scripts/test-stress-test-generator.ts",
+    "test:scoring": "tsx scripts/test-scoring.ts",
+    "test:trial-generator": "tsx scripts/test-trial-generator.ts"
   },
   "dependencies": {
     "next": "^14.2.0",

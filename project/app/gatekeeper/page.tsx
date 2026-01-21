@@ -1,21 +1,19 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Suspense } from "react";
+import { GatekeeperContent } from "./GatekeeperContent";
 
 export default function GatekeeperPage() {
   return (
-    <div className="container mx-auto p-4">
-      <Card>
-        <CardHeader>
-          <CardTitle>GATEKEEPER</CardTitle>
-          <CardDescription>
-            The action path - for when you have a specific goal or project to execute.
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <p className="text-sm text-muted-foreground">
-            This page will be implemented in a future milestone.
-          </p>
-        </CardContent>
-      </Card>
-    </div>
+    <Suspense
+      fallback={
+        <div className="container mx-auto p-4 flex items-center justify-center min-h-screen">
+          <div className="text-center">
+            <div className="h-5 w-5 animate-spin rounded-full border-2 border-current border-t-transparent mx-auto mb-2" />
+            <p className="text-sm text-muted-foreground">Loading...</p>
+          </div>
+        </div>
+      }
+    >
+      <GatekeeperContent />
+    </Suspense>
   );
 }

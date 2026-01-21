@@ -10,7 +10,7 @@
           {
             "id": "1433207da006d087",
             "type": "tabs",
-            "dimension": 62.421052631578945,
+            "dimension": 49.84193888303478,
             "children": [
               {
                 "id": "54896c8f6eb40450",
@@ -39,73 +39,59 @@
                   "icon": "lucide-file",
                   "title": "features"
                 }
+              },
+              {
+                "id": "dcc27ed2b09d38ee",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "context/cur-status.md",
+                    "mode": "source",
+                    "source": false
+                  },
+                  "icon": "lucide-file",
+                  "title": "cur-status"
+                }
               }
             ],
             "currentTab": 1
           },
           {
-            "id": "282b193d5760c61f",
-            "type": "split",
-            "dimension": 37.57894736842105,
+            "id": "0c484be5d8b95f4a",
+            "type": "tabs",
+            "dimension": 50.15806111696522,
             "children": [
               {
-                "id": "0c484be5d8b95f4a",
-                "type": "tabs",
-                "dimension": 71.98879551820728,
-                "children": [
-                  {
-                    "id": "d77c877fc6784e3d",
-                    "type": "leaf",
-                    "state": {
-                      "type": "markdown",
-                      "state": {
-                        "file": "context/cur-feature.md",
-                        "mode": "source",
-                        "source": false
-                      },
-                      "icon": "lucide-file",
-                      "title": "cur-feature"
-                    }
+                "id": "d77c877fc6784e3d",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "context/cur-feature.md",
+                    "mode": "source",
+                    "source": false
                   },
-                  {
-                    "id": "c4ac4886896e8754",
-                    "type": "leaf",
-                    "state": {
-                      "type": "markdown",
-                      "state": {
-                        "file": "docs/process.md",
-                        "mode": "source",
-                        "source": false
-                      },
-                      "icon": "lucide-file",
-                      "title": "process"
-                    }
-                  }
-                ]
+                  "icon": "lucide-file",
+                  "title": "cur-feature"
+                }
               },
               {
-                "id": "a055f86e1947846f",
-                "type": "tabs",
-                "dimension": 28.011204481792717,
-                "children": [
-                  {
-                    "id": "24d2f6721f4bf71d",
-                    "type": "leaf",
-                    "state": {
-                      "type": "markdown",
-                      "state": {
-                        "file": "context/cur-status.md",
-                        "mode": "source",
-                        "source": false
-                      },
-                      "icon": "lucide-file",
-                      "title": "cur-status"
-                    }
-                  }
-                ]
+                "id": "c4ac4886896e8754",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "docs/process.md",
+                    "mode": "source",
+                    "source": false
+                  },
+                  "icon": "lucide-file",
+                  "title": "process"
+                }
               }
             ],
-            "direction": "vertical"
+            "currentTab": 1
           }
         ],
         "direction": "horizontal"
@@ -268,25 +254,24 @@
       "bases:Create new base": false
     }
   },
-  "active": "d77c877fc6784e3d",
+  "active": "0dd1d7839d6d7597",
   "lastOpenFiles": [
-    "project/node_modules/@emnapi/wasi-threads/package.json",
-    "project/node_modules/@emnapi/wasi-threads/index.js",
-    "project/node_modules/@emnapi/wasi-threads/README.md",
-    "project/node_modules/@emnapi/wasi-threads/LICENSE",
-    "project/node_modules/@emnapi/wasi-threads/dist",
-    "project/node_modules/@emnapi/wasi-threads",
-    "project/node_modules/@unrs/resolver-binding-linux-s390x-gnu",
-    "project/node_modules/@unrs/resolver-binding-linux-ppc64-gnu",
-    "project/node_modules/@unrs/resolver-binding-linux-riscv64-musl",
-    "project/node_modules/@unrs/resolver-binding-linux-arm-musleabihf",
-    "project/node_modules/@unrs/resolver-binding-linux-riscv64-gnu",
-    "project/node_modules/@unrs/resolver-binding-linux-arm64-musl",
-    "docs/features.md",
-    "context/cur-feature.md",
-    "docs/prd.md",
     "context/cur-status.md",
+    "docs/prd.md",
+    "docs/features.md",
     "docs/process.md",
+    "context/cur-feature.md",
+    "project/components/volition/trial/TrialDashboard.tsx",
+    "project/components/volition/trial",
+    "project/app/trial/TrialContent.tsx",
+    "project/app/trial/page.tsx",
+    "project/app/trial",
+    "project/lib/actions/trial.ts",
+    "project/supabase/migrations/003_add_acceptance_criteria_to_trial_tasks.sql",
+    "project/scripts/test-trial-generator.ts",
+    "project/scripts/test-cases/trial-generator.test-cases.json",
+    "project/lib/actions/trial-generator.ts",
+    "project/node_modules/@emnapi/wasi-threads/README.md",
     "project/node_modules/form-data-encoder/readme.md",
     "project/node_modules/formdata-node/readme.md",
     "project/node_modules/form-data/README.md",

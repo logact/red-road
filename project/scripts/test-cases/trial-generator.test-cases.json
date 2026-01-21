@@ -1,0 +1,34 @@
+{
+  "testCases": [
+    {
+      "id": "test-1",
+      "goalTitle": "Build a Telegram bot",
+      "description": "Acceptance criteria: Technical project goal - should generate 3-7 executable tasks (<20 min each) specific to bot development"
+    },
+    {
+      "id": "test-2",
+      "goalTitle": "Learn Spanish",
+      "description": "Acceptance criteria: Learning goal - should generate 3-7 executable tasks (<20 min each) specific to language learning"
+    },
+    {
+      "id": "test-3",
+      "goalTitle": "Write a blog post",
+      "description": "Acceptance criteria: Creative goal - should generate 3-7 executable tasks (<20 min each) specific to writing"
+    },
+    {
+      "id": "test-4",
+      "goalTitle": "Get in shape",
+      "description": "Acceptance criteria: Health goal - should generate 3-7 executable tasks (<20 min each) specific to fitness"
+    },
+    {
+      "id": "test-5",
+      "goalTitle": "Start a SaaS business",
+      "description": "Acceptance criteria: Business goal - should generate 3-7 executable tasks (<20 min each) specific to entrepreneurship"
+    },
+    {
+      "id": "test-6",
+      "goalTitle": "Build a mobile app for task management",
+      "description": "Acceptance criteria: Complex technical goal - should generate 3-7 executable tasks (<20 min each) specific to app development"
+    }
+  ]
+}
