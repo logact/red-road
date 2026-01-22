@@ -50,13 +50,13 @@
 ### Milestone 3: The Adaptive Architect (Scoping & Planning)
 *Goal: Establish Scope -> Size -> Plan.*
 
-| ID | Feature | Status | Criteria Checklist (Must Pass) | Notes / Blockers |
-| :--- | :--- | :--- | :--- | :--- |
-| **3.1** | **Surveyor Form** | 🔴 | <ul><li>[ ] Collects "Hours/Week" & "Stack"</li><li>[ ] Saves to `goal.scope` JSON</li></ul> | |
-| **3.2** | **Sizing Logic** | 🔴 | <ul><li>[ ] Calculates `end_date` from hours</li><li>[ ] Assigns S/M/L Complexity</li></ul> | |
-| **3.3** | **Stream Architect** | 🔴 | <ul><li>[ ] JSON Streams to UI in real-time</li><li>[ ] Validates against Zod Schema</li></ul> | |
-| **3.4** | **Miller's Guard** | 🔴 | <ul><li>[ ] No list exceeds 7 items</li><li>[ ] Auto-correction works</li></ul> | |
-| **3.5** | **Cluster Gen** | 🔴 | <ul><li>[ ] Jobs generated for Milestone 1 only</li><li>[ ] Tags: QUICK_WIN / DEEP_WORK</li></ul> | |
+| ID      | Feature              | Status | Criteria Checklist (Must Pass)                                                                    | Notes / Blockers |
+| :------ | :------------------- | :----- | :------------------------------------------------------------------------------------------------ | :--------------- |
+| **3.1** | **Surveyor Form**    | 🔴     | <ul><li>[ ] Collects "Hours/Week" & "Stack"</li><li>[ ] Saves to `goal.scope` JSON</li></ul>      |                  |
+| **3.2** | **Sizing Logic**     | 🔴     | <ul><li>[ ] Calculates `end_date` from hours</li><li>[ ] Assigns S/M/L Complexity</li></ul>       |                  |
+| **3.3** | **Stream Architect** | 🔴     | <ul><li>[ ] JSON Streams to UI in real-time</li><li>[ ] Validates against Zod Schema</li></ul>    |                  |
+| **3.4** | **Miller's Guard**   | 🔴     | <ul><li>[ ] No list exceeds 7 items</li><li>[ ] Auto-correction works</li></ul>                   |                  |
+| **3.5** | **Cluster Gen**      | 🔴     | <ul><li>[ ] Jobs generated for Milestone 1 only</li><li>[ ] Tags: QUICK_WIN / DEEP_WORK</li></ul> |                  |
 
 ### Milestone 4: The Action Engine (Execution)
 *Goal: The Interface. "Compass, not Map."*

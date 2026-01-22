@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { markTaskDone, giveUpGoal } from "@/lib/actions/trial";
 import { Button } from "@/components/ui/button";
@@ -45,6 +45,14 @@ export function TrialDashboard({
 
   // Check if all tasks are completed
   const allTasksCompleted = tasks.length > 0 && tasks.every((task) => task.status === "COMPLETED");
+
+  // Auto-redirect to scope form when all tasks are completed (Feature 3.1)
+  useEffect(() => {
+    if (allTasksCompleted) {
+      // The graduation handler has already updated the goal status to PENDING_SCOPE
+      router.push(`/architect/scope?goalId=${encodeURIComponent(goal.id)}`);
+    }
+  }, [allTasksCompleted, goal.id, router]);
 
   const handleMarkDone = async () => {
     if (!activeTask) return;
@@ -125,15 +133,12 @@ export function TrialDashboard({
             <div className="rounded-md bg-green-50 p-4 text-green-800 dark:bg-green-900/20 dark:text-green-400">
               <p className="font-semibold">All trial tasks completed!</p>
               <p className="text-sm mt-1">
-                Your goal will now proceed to the next phase. (Feature 2.8 - Graduation Handler)
+                Redirecting to scope definition...
               </p>
             </div>
-            <Button
-              onClick={() => router.push("/dashboard")}
-              className="w-full"
-            >
-              Return to Dashboard
-            </Button>
+            <div className="flex items-center justify-center">
+              <span className="h-5 w-5 animate-spin rounded-full border-2 border-current border-t-transparent" />
+            </div>
           </CardContent>
         </Card>
       </div>

@@ -184,7 +184,8 @@ export async function markTaskDone(
 
   if (nextTaskError) {
     // No next task found - this is the last task
-    // This will be handled by the graduation handler (feature 2.8)
+    // Trigger graduation handler (feature 2.8)
+    await handleGraduation(goalId);
   } else if (nextTask) {
     // Activate the next task
     const { error: activateError } = await supabase
@@ -252,4 +253,54 @@ export async function giveUpGoal(goalId: string): Promise<{ success: boolean }> 
   }
 
   return { success: true };
+}
+
+/**
+ * Graduation Handler (Feature 2.8)
+ * 
+ * Updates goal status to PENDING_SCOPE when all trial tasks are completed.
+ * This prepares the goal for the scope definition phase (Feature 3.1).
+ * 
+ * @param goalId - The goal ID to graduate
+ * @throws Error if goal doesn't exist or update fails
+ */
+export async function handleGraduation(goalId: string): Promise<void> {
+  const supabase = await createClient();
+
+  // Verify user is authenticated
+  const {
+    data: { user },
+    error: userError,
+  } = await supabase.auth.getUser();
+
+  if (userError || !user) {
+    throw new Error("User authentication required");
+  }
+
+  // Verify goal ownership
+  const { data: goalData, error: goalError } = await supabase
+    .from("goals")
+    .select("id, user_id")
+    .eq("id", goalId)
+    .single();
+
+  if (goalError || !goalData) {
+    throw new Error("Goal not found");
+  }
+
+  if (goalData.user_id !== user.id) {
+    throw new Error("Unauthorized access to goal");
+  }
+
+  // Update goal status to PENDING_SCOPE (ready for scope definition)
+  const { error: updateError } = await supabase
+    .from("goals")
+    .update({
+      status: "PENDING_SCOPE",
+    })
+    .eq("id", goalId);
+
+  if (updateError) {
+    throw new Error(`Failed to update goal status: ${updateError.message}`);
+  }
 }

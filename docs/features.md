@@ -38,15 +38,15 @@ Based on the finalized feature roadmap for **Volition OS**, this document serve
 
 ## Milestone 3: The Adaptive Architect (Scoping & Planning)
 
-**Goal:** Establish Scope (Module C, Phase 1) $\to$ Size (Phase 2) $\to$ Plan (Phase 3)18.
+**Goal:** Establish Scope (  C, Phase 1) $\to$ Size (Phase 2) $\to$ Plan (Phase 3)18.
 
-| **Feature ID** | **Feature Name**    | **Description**                                                                      | **Acceptance Criteria**                                                                                   | **Est. Effort** |
-| -------------- | ------------------- | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------- | --------------- |
-| **3.1**        | The Surveyor Form   | UI Form to collect "Triangle of Scope" (Hours/Week, Tech Stack, DoD)19.              | 1. Validates "Hours/Week" is a number.<br><br>  <br><br>2. Submitting updates `goal.scope` in DB20.       | 2.0h            |
-| **3.2**        | Sizing Logic        | AI assesses complexity (S/M/L) based on Intent + Survey Data21.                      | 1. Returns `LARGE` if hours > 100.<br><br>  <br><br>2. Calculates `projected_end_date`22.                 | 1.5h            |
-| **3.3**        | Streaming Architect | Streaming API (`streamObject`) that generates Phases and Milestones JSON23.          | 1. UI renders Phase 1 while Phase 2 generates.<br><br>  <br><br>2. Output validates against GoalSchema24. | 3.0h            |
-| **3.4**        | Miller's Law Guard  | System Prompt Constraint: "No list may exceed 7 items"25.                            | 1. Lists >7 items are split or rejected.<br><br>  <br><br>2. Verified via massive goal test prompt26.     | 0.5h            |
-| **3.5**        | Cluster Generator   | AI generates Jobs only for the Active Milestone, tagged as QUICK_WIN or DEEP_WORK27. | 1. Jobs are tagged correctly.<br><br>  <br><br>2. Jobs are inserted into the jobs table28.                | 2.0h            |
+| **Feature ID** | **Feature Name**                                       | **Description**                                                                                                                          | **Acceptance Criteria**                                                                                                                                                                                                                                                    | **Est. Effort** |     |
+| -------------- | ------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- | --- |
+| **3.1**        | **The Surveyor**<br><br>  <br><br>_(Scope Form)_       | **UI Form & DB Update.**<br><br>  <br><br>Collects the "Triangle of Scope" (Hard constraints) from the user before planning begins.      | 1. **Validation:** Rejects non-numeric "Hours/Week" and empty "Definition of Done".<br><br>  <br><br>2. **Persistence:** Successfully updates the `goals.scope` JSONB column in Supabase.<br><br>  <br><br>3. **UX:** Auto-advances to Feature 3.2 upon success.           | 1.5h            |     |
+| **3.2**        | **Complexity Estimator**<br><br>  <br><br>_(Prompt A)_ | **Server Action.**<br><br>  <br><br>AI analyzes `Goal` + `Scope` to estimate total effort (Hours) and size (S/M/L).                      | 1. **Logic:** Returns `SIZE: LARGE` if estimated hours > 100.<br><br>  <br><br>2. **Output:** Returns valid JSON matching `ComplexitySchema`.<br><br>  <br><br>3. **DB:** Updates `goals.complexity` with the result.                                                      | 1.5h            |     |
+| **3.3**        | **Blueprint Generator**<br><br>  <br><br>_(Prompt B)_  | **Server Action.**<br><br>  <br><br>Generates the _Structure_ (Phases & Milestones) based on Complexity. **Does not generate jobs yet.** | 1. **Miller's Law:** No Phase contains > 7 Milestones.<br><br>  <br><br>2. **Hierarchy:** Correctly links Milestones to Phases (Parent/Child IDs).<br><br>  <br><br>3. **DB:** Bulk inserts rows into `phases` and `milestones` tables.                                    | 2.0h            |     |
+| **3.4**        | **Blueprint Renderer**<br><br>  <br><br>_(The Map UI)_ | **Frontend Component.**<br><br>  <br><br>Visualizes the Phases/Milestones tree. Allows the user to select the "Active Milestone."        | 1. **Visual:** Clearly distinguishes between "Active," "Pending," and "Locked" phases.<br><br>  <br><br>2. **Interaction:** Clicking a Milestone opens the "Job View" (Feature 3.5).<br><br>  <br><br>3. **Load State:** Handles skeletal loading while 3.3 is generating. | 2.0h            |     |
+| **3.5**        | **The Job Atomizer**<br><br>  <br><br>_(Prompt C)_     | **Server Action.**<br><br>  <br><br>Generates specific `Job Clusters` and `Jobs` _only_for the currently Active Milestone.               | 1. **Atomic Constraint:** All generated jobs have `est_minutes <= 120`.<br><br>  <br><br>2. **Context:** Jobs are contextually relevant to the specific Milestone.<br><br>  <br><br>3. **DB:** Inserts jobs into `jobs` table with correct `milestone_id`.                 | 2.0h            |     |
 
 ---
 
@@ -54,11 +54,11 @@ Based on the finalized feature roadmap for **Volition OS**, this document serve
 
 **Goal:** The Interface (Module D). "Compass, not Map"29.
 
-|**Feature ID**|**Feature Name**|**Description**|**Acceptance Criteria**|**Est. Effort**|
-|---|---|---|---|---|
-|**4.1**|Energy Filter|Client-side Hook (`useActionEngine`). If user state is LOW, hide DEEP_WORK30.|1. Toggling "Low Energy" filters cards.<br><br>  <br><br>2. UI update is instant31.|2.0h|
-|**4.2**|Crisis Override|Logic to bypass filters if deadline < 24h32.|1. Urgent tasks visible in "Low Energy" mode.<br><br>  <br><br>2. Task has "URGENT" badge33.|1.5h|
-|**4.3**|Job Card Actions|Interactive UI: Mark Done (Fade out), Mark Failed (Increment counter)34.|1. "Done" updates DB to `COMPLETED`.<br><br>  <br><br>2. "Failed" updates `failure_count`35.|1.5h|
+| **Feature ID** | **Feature Name** | **Description**                                                               | **Acceptance Criteria**                                                                      | **Est. Effort** |
+| -------------- | ---------------- | ----------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | --------------- |
+| **4.1**        | Energy Filter    | Client-side Hook (`useActionEngine`). If user state is LOW, hide DEEP_WORK30. | 1. Toggling "Low Energy" filters cards.<br><br>  <br><br>2. UI update is instant31.          | 2.0h            |
+| **4.2**        | Crisis Override  | Logic to bypass filters if deadline < 24h32.                                  | 1. Urgent tasks visible in "Low Energy" mode.<br><br>  <br><br>2. Task has "URGENT" badge33. | 1.5h            |
+| **4.3**        | Job Card Actions | Interactive UI: Mark Done (Fade out), Mark Failed (Increment counter)34.      | 1. "Done" updates DB to `COMPLETED`.<br><br>  <br><br>2. "Failed" updates `failure_count`35. | 1.5h            |
 
 ---
 

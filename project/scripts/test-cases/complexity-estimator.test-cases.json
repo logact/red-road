@@ -1,0 +1,111 @@
+{
+  "testCases": [
+    {
+      "id": "test-1",
+      "goalTitle": "Build a Telegram bot",
+      "description": "SMALL goal - Simple technical project, should estimate < 20 hours",
+      "scope": {
+        "hard_constraint_hours_per_week": 10,
+        "tech_stack": ["Node.js", "Telegram Bot API"],
+        "definition_of_done": "A working bot that responds to /start and /help commands, deployed to production",
+        "user_background_level": "INTERMEDIATE"
+      },
+      "expectedSize": "SMALL",
+      "expectedMaxHours": 20
+    },
+    {
+      "id": "test-2",
+      "goalTitle": "Learn Spanish to conversational level",
+      "description": "MEDIUM goal - Learning goal, should estimate 20-100 hours",
+      "scope": {
+        "hard_constraint_hours_per_week": 5,
+        "tech_stack": ["Duolingo", "SpanishPod101"],
+        "definition_of_done": "Can hold a 30-minute conversation in Spanish on everyday topics",
+        "user_background_level": "BEGINNER"
+      },
+      "expectedSize": "MEDIUM",
+      "expectedMinHours": 20,
+      "expectedMaxHours": 100
+    },
+    {
+      "id": "test-3",
+      "goalTitle": "Build a SaaS platform with user authentication, payment processing, and admin dashboard",
+      "description": "MEDIUM goal - Complex technical project, should estimate 20-100 hours",
+      "scope": {
+        "hard_constraint_hours_per_week": 15,
+        "tech_stack": ["Next.js", "Supabase", "Stripe", "TypeScript"],
+        "definition_of_done": "MVP deployed with user signup/login, subscription management, and admin panel for user management",
+        "user_background_level": "ADVANCED"
+      },
+      "expectedSize": "MEDIUM",
+      "expectedMinHours": 20,
+      "expectedMaxHours": 100
+    },
+    {
+      "id": "test-4",
+      "goalTitle": "Create a full-stack e-commerce platform with inventory management, order processing, shipping integration, customer reviews, recommendation engine, and mobile app",
+      "description": "LARGE goal - Very complex project, should estimate > 100 hours",
+      "scope": {
+        "hard_constraint_hours_per_week": 20,
+        "tech_stack": ["React", "Node.js", "PostgreSQL", "Redis", "AWS", "React Native"],
+        "definition_of_done": "Complete e-commerce platform with all features deployed and mobile apps published to app stores",
+        "user_background_level": "EXPERT"
+      },
+      "expectedSize": "LARGE",
+      "expectedMinHours": 100
+    },
+    {
+      "id": "test-5",
+      "goalTitle": "Write a blog post",
+      "description": "SMALL goal - Simple creative task, should estimate < 20 hours",
+      "scope": {
+        "hard_constraint_hours_per_week": 5,
+        "tech_stack": ["Markdown", "WordPress"],
+        "definition_of_done": "A published blog post of at least 1000 words with proper formatting and images",
+        "user_background_level": "INTERMEDIATE"
+      },
+      "expectedSize": "SMALL",
+      "expectedMaxHours": 20
+    },
+    {
+      "id": "test-6",
+      "goalTitle": "Build a mobile app for task management",
+      "description": "MEDIUM goal - Mobile app development, should estimate 20-100 hours",
+      "scope": {
+        "hard_constraint_hours_per_week": 12,
+        "tech_stack": ["React Native", "Firebase", "TypeScript"],
+        "definition_of_done": "Working mobile app with task CRUD operations, user authentication, and cloud sync, published to app stores",
+        "user_background_level": "ADVANCED"
+      },
+      "expectedSize": "MEDIUM",
+      "expectedMinHours": 20,
+      "expectedMaxHours": 100
+    },
+    {
+      "id": "test-7",
+      "goalTitle": "Build a simple landing page",
+      "description": "SMALL goal - Very simple web project, should estimate < 20 hours",
+      "scope": {
+        "hard_constraint_hours_per_week": 8,
+        "tech_stack": ["HTML", "CSS", "JavaScript"],
+        "definition_of_done": "A responsive landing page with contact form, deployed to production",
+        "user_background_level": "BEGINNER"
+      },
+      "expectedSize": "SMALL",
+      "expectedMaxHours": 20
+    },
+    {
+      "id": "test-8",
+      "goalTitle": "Develop a comprehensive data analytics platform with real-time dashboards, automated reporting, machine learning predictions, and multi-tenant architecture",
+      "description": "LARGE goal - Enterprise-level project, should estimate > 100 hours",
+      "scope": {
+        "hard_constraint_hours_per_week": 25,
+        "tech_stack": ["Python", "FastAPI", "PostgreSQL", "Redis", "Docker", "Kubernetes", "TensorFlow"],
+        "definition_of_done": "Fully deployed analytics platform with all features, supporting 1000+ concurrent users, with ML models in production",
+        "user_background_level": "EXPERT"
+      },
+      "expectedSize": "LARGE",
+      "expectedMinHours": 100
+    }
+  ]
+}

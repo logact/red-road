@@ -203,3 +203,170 @@ export type TrialTask = z.infer<typeof TrialTaskSchema>;
  * Type inferred from TrialPlanResponseSchema
  */
 export type TrialPlanResponse = z.infer<typeof TrialPlanResponseSchema>;
+
+/**
+ * Complexity size categories
+ * SMALL: < 20 hours
+ * MEDIUM: 20-100 hours
+ * LARGE: > 100 hours
+ */
+export const ComplexitySizeSchema = z.enum(["SMALL", "MEDIUM", "LARGE"], {
+  errorMap: () => ({
+    message: "Size must be either 'SMALL', 'MEDIUM', or 'LARGE'",
+  }),
+});
+
+/**
+ * Complexity assessment schema
+ * Validates the complexity estimation result from the LLM
+ * 
+ * @property size - The complexity category (SMALL < 20h, MEDIUM 20-100h, LARGE > 100h)
+ * @property estimated_total_hours - Total estimated hours for the goal (must be positive)
+ * @property projected_end_date - Projected completion date (ISO string format)
+ */
+export const ComplexitySchema = z.object({
+  size: ComplexitySizeSchema,
+  estimated_total_hours: z
+    .number()
+    .positive("Estimated total hours must be a positive number")
+    .finite("Estimated total hours must be a finite number"),
+  projected_end_date: z.string().min(1, "Projected end date cannot be empty"),
+});
+
+/**
+ * Type inferred from ComplexitySizeSchema
+ */
+export type ComplexitySize = z.infer<typeof ComplexitySizeSchema>;
+
+/**
+ * Type inferred from ComplexitySchema
+ */
+export type Complexity = z.infer<typeof ComplexitySchema>;
+
+/**
+ * Milestone blueprint schema
+ * Validates individual milestone in the blueprint structure
+ */
+export const MilestoneBlueprintSchema = z.object({
+  title: z.string().min(1, "Milestone title cannot be empty"),
+  acceptance_criteria: z.string().min(1, "Acceptance criteria cannot be empty"),
+});
+
+/**
+ * Phase blueprint schema
+ * Validates phase with milestones array (enforces Miller's Law: max 7 milestones)
+ */
+export const PhaseBlueprintSchema = z.object({
+  title: z.string().min(1, "Phase title cannot be empty"),
+  milestones: z
+    .array(MilestoneBlueprintSchema)
+    .min(1, "Phase must have at least 1 milestone")
+    .max(7, "Phase cannot have more than 7 milestones (Miller's Law)"),
+});
+
+/**
+ * Blueprint response schema
+ * Validates the full blueprint structure with phases array
+ * Each phase must have ≤ 7 milestones (Miller's Law)
+ */
+export const BlueprintResponseSchema = z
+  .array(PhaseBlueprintSchema)
+  .min(1, "Blueprint must have at least 1 phase")
+  .refine(
+    (phases) => {
+      // Additional safety check: ensure all phases comply with Miller's Law
+      return phases.every((phase) => phase.milestones.length <= 7);
+    },
+    {
+      message: "All phases must comply with Miller's Law (max 7 milestones per phase)",
+    }
+  );
+
+/**
+ * Type inferred from MilestoneBlueprintSchema
+ */
+export type MilestoneBlueprint = z.infer<typeof MilestoneBlueprintSchema>;
+
+/**
+ * Type inferred from PhaseBlueprintSchema
+ */
+export type PhaseBlueprint = z.infer<typeof PhaseBlueprintSchema>;
+
+/**
+ * Type inferred from BlueprintResponseSchema
+ */
+export type BlueprintResponse = z.infer<typeof BlueprintResponseSchema>;
+
+/**
+ * Job type schema for atomizer
+ * Validates that job type is one of: QUICK_WIN, DEEP_WORK, ANCHOR
+ */
+export const JobTypeSchema = z.enum(["QUICK_WIN", "DEEP_WORK", "ANCHOR"], {
+  errorMap: () => ({
+    message: "Job type must be either 'QUICK_WIN', 'DEEP_WORK', or 'ANCHOR'",
+  }),
+});
+
+/**
+ * Job atomizer schema
+ * Validates individual job with atomic constraint (est_minutes ≤ 120)
+ */
+export const JobAtomizerSchema = z.object({
+  title: z.string().min(1, "Job title cannot be empty"),
+  type: JobTypeSchema,
+  est_minutes: z
+    .number()
+    .int()
+    .min(1, "Estimated minutes must be at least 1")
+    .max(120, "Estimated minutes must be at most 120 (atomic constraint)"),
+});
+
+/**
+ * Job cluster atomizer schema
+ * Validates job cluster with jobs array
+ */
+export const JobClusterAtomizerSchema = z.object({
+  title: z.string().min(1, "Job cluster title cannot be empty"),
+  jobs: z
+    .array(JobAtomizerSchema)
+    .min(1, "Job cluster must have at least 1 job"),
+});
+
+/**
+ * Job atomizer response schema
+ * Validates the full response (array of clusters with jobs)
+ */
+export const JobAtomizerResponseSchema = z
+  .array(JobClusterAtomizerSchema)
+  .min(1, "Must contain at least 1 job cluster")
+  .refine(
+    (clusters) => {
+      // Additional runtime check: ensure all jobs comply with atomic constraint
+      for (const cluster of clusters) {
+        for (const job of cluster.jobs) {
+          if (job.est_minutes > 120) {
+            return false;
+          }
+        }
+      }
+      return true;
+    },
+    {
+      message: "All jobs must comply with atomic constraint (est_minutes ≤ 120)",
+    }
+  );
+
+/**
+ * Type inferred from JobAtomizerSchema
+ */
+export type JobAtomizer = z.infer<typeof JobAtomizerSchema>;
+
+/**
+ * Type inferred from JobClusterAtomizerSchema
+ */
+export type JobClusterAtomizer = z.infer<typeof JobClusterAtomizerSchema>;
+
+/**
+ * Type inferred from JobAtomizerResponseSchema
+ */
+export type JobAtomizerResponse = z.infer<typeof JobAtomizerResponseSchema>;

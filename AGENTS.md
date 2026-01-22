@@ -21,7 +21,7 @@ Before writing or editing any code, you MUST ingest the context in the following
 
 ## 3. Workflow Rules
 
-1.  **Context Verification:** When asked to implement a feature, explicitly confirm you have read `context/cur-feature.md`.
+1.  **Context Verification:** When asked to implement a feature, explicitly confirm you have read `context/cur-status.md` to get current status of the project,and read `docs/features` to learn the detail of the feature.
 2.  **Tech Compliance:** If a user request contradicts `context/bg-techspec.md`, warn the user before proceeding.
 3.  **Status Updates:** After completing a significant task, suggest updates to `context/cur-status.md` to keep the project state current.
 

@@ -28,17 +28,25 @@ export interface Complexity {
 }
 
 /**
+ * User background/experience level for a goal.
+ * Used to help estimate complexity more accurately.
+ */
+export type UserBackgroundLevel = "BEGINNER" | "INTERMEDIATE" | "ADVANCED" | "EXPERT";
+
+/**
  * Scope definition data structure.
  * Stored as JSONB in the goals.scope column.
  * 
  * @property hard_constraint_hours_per_week - Maximum hours per week available
  * @property tech_stack - Array of technologies/tools to be used
  * @property definition_of_done - Optional completion criteria
+ * @property user_background_level - User's experience level related to this goal
  */
 export interface Scope {
   hard_constraint_hours_per_week: number;
   tech_stack: string[];
   definition_of_done?: string;
+  user_background_level?: UserBackgroundLevel;
 }
 
 /**
