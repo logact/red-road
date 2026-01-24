@@ -370,3 +370,51 @@ export type JobClusterAtomizer = z.infer<typeof JobClusterAtomizerSchema>;
  * Type inferred from JobAtomizerResponseSchema
  */
 export type JobAtomizerResponse = z.infer<typeof JobAtomizerResponseSchema>;
+
+/**
+ * Negotiator recommendation schema
+ * Validates that the recommendation is either "INSIST" or "CHANGE"
+ */
+export const NegotiatorRecommendationSchema = z.enum(["INSIST", "CHANGE"], {
+  errorMap: () => ({
+    message: "Recommendation must be either 'INSIST' or 'CHANGE'",
+  }),
+});
+
+/**
+ * Negotiator response schema
+ * Validates the AI consultant's advice and recommendation
+ * 
+ * @property recommendation - Whether to insist on current job or change it
+ * @property advice - Short advice string explaining the recommendation
+ */
+export const NegotiatorResponseSchema = z.object({
+  recommendation: NegotiatorRecommendationSchema,
+  advice: z.string().min(10, "Advice must be at least 10 characters").max(500, "Advice must be at most 500 characters"),
+});
+
+/**
+ * Type inferred from NegotiatorRecommendationSchema
+ */
+export type NegotiatorRecommendation = z.infer<typeof NegotiatorRecommendationSchema>;
+
+/**
+ * Type inferred from NegotiatorResponseSchema
+ */
+export type NegotiatorResponse = z.infer<typeof NegotiatorResponseSchema>;
+
+/**
+ * Job mutation schema
+ * Validates a single regenerated job (reuses JobAtomizerSchema structure)
+ * Used when mutating a failed job based on user feedback
+ * 
+ * @property title - The new job title (must be specific and actionable)
+ * @property type - The job type (QUICK_WIN, DEEP_WORK, or ANCHOR)
+ * @property est_minutes - Estimated minutes (must be ≤ 120, atomic constraint)
+ */
+export const JobMutationSchema = JobAtomizerSchema;
+
+/**
+ * Type inferred from JobMutationSchema
+ */
+export type JobMutation = z.infer<typeof JobMutationSchema>;

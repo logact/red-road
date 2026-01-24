@@ -13,6 +13,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Home } from "lucide-react";
 
 interface ScopeFormProps {
   goalId: string;
@@ -127,10 +128,23 @@ export function ScopeForm({ goalId, goalTitle, initialScope }: ScopeFormProps) {
   return (
     <Card className="w-full max-w-4xl">
       <CardHeader>
-        <CardTitle>The Surveyor</CardTitle>
-        <CardDescription>
-          Define the "Triangle of Scope" for: {goalTitle}
-        </CardDescription>
+        <div className="flex items-start justify-between">
+          <div className="flex-1">
+            <CardTitle>The Surveyor</CardTitle>
+            <CardDescription>
+              Define the "Triangle of Scope" for: {goalTitle}
+            </CardDescription>
+          </div>
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => router.push(`/dashboard?goalId=${encodeURIComponent(goalId)}`)}
+            className="min-h-[44px] min-w-[44px]"
+            title="Back to Dashboard"
+          >
+            <Home className="h-4 w-4" />
+          </Button>
+        </div>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-6">

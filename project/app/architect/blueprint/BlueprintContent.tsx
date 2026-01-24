@@ -13,6 +13,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import type { PhaseRow, MilestoneRow, PhaseStatus, MilestoneStatus } from "@/types/volition";
+import { Home } from "lucide-react";
 
 interface BlueprintContentProps {
   goalId: string;
@@ -167,10 +168,23 @@ export function BlueprintContent({ goalId, goalTitle }: BlueprintContentProps) {
     return (
       <Card className="w-full max-w-6xl">
         <CardHeader>
-          <CardTitle>The Map</CardTitle>
-          <CardDescription>
-            {generating ? "Generating blueprint for" : "Loading blueprint for"}: {goalTitle}
-          </CardDescription>
+          <div className="flex items-start justify-between">
+            <div className="flex-1">
+              <CardTitle>The Map</CardTitle>
+              <CardDescription>
+                {generating ? "Generating blueprint for" : "Loading blueprint for"}: {goalTitle}
+              </CardDescription>
+            </div>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => router.push(`/dashboard?goalId=${encodeURIComponent(goalId)}`)}
+              className="min-h-[44px] min-w-[44px]"
+              title="Back to Dashboard"
+            >
+              <Home className="h-4 w-4" />
+            </Button>
+          </div>
         </CardHeader>
         <CardContent>
           <div className="flex flex-col items-center justify-center py-12">
@@ -190,10 +204,23 @@ export function BlueprintContent({ goalId, goalTitle }: BlueprintContentProps) {
     return (
       <Card className="w-full max-w-6xl">
         <CardHeader>
-          <CardTitle>The Map</CardTitle>
-          <CardDescription>
-            Error loading blueprint for: {goalTitle}
-          </CardDescription>
+          <div className="flex items-start justify-between">
+            <div className="flex-1">
+              <CardTitle>The Map</CardTitle>
+              <CardDescription>
+                Error loading blueprint for: {goalTitle}
+              </CardDescription>
+            </div>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => router.push(`/dashboard?goalId=${encodeURIComponent(goalId)}`)}
+              className="min-h-[44px] min-w-[44px]"
+              title="Back to Dashboard"
+            >
+              <Home className="h-4 w-4" />
+            </Button>
+          </div>
         </CardHeader>
         <CardContent>
           <div className="rounded-md bg-red-50 p-3 text-sm text-red-800 dark:bg-red-900/20 dark:text-red-400">
@@ -215,10 +242,23 @@ export function BlueprintContent({ goalId, goalTitle }: BlueprintContentProps) {
     return (
       <Card className="w-full max-w-6xl">
         <CardHeader>
-          <CardTitle>The Map</CardTitle>
-          <CardDescription>
-            Blueprint for: {goalTitle}
-          </CardDescription>
+          <div className="flex items-start justify-between">
+            <div className="flex-1">
+              <CardTitle>The Map</CardTitle>
+              <CardDescription>
+                Blueprint for: {goalTitle}
+              </CardDescription>
+            </div>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => router.push(`/dashboard?goalId=${encodeURIComponent(goalId)}`)}
+              className="min-h-[44px] min-w-[44px]"
+              title="Back to Dashboard"
+            >
+              <Home className="h-4 w-4" />
+            </Button>
+          </div>
         </CardHeader>
         <CardContent>
           <div className="rounded-md bg-blue-50 p-4 text-sm text-blue-800 dark:bg-blue-900/20 dark:text-blue-400 mb-4">
@@ -242,10 +282,23 @@ export function BlueprintContent({ goalId, goalTitle }: BlueprintContentProps) {
   return (
     <Card className="w-full max-w-6xl">
       <CardHeader>
-        <CardTitle>The Map</CardTitle>
-        <CardDescription>
-          Blueprint visualization for: {goalTitle}
-        </CardDescription>
+        <div className="flex items-start justify-between">
+          <div className="flex-1">
+            <CardTitle>The Map</CardTitle>
+            <CardDescription>
+              Blueprint visualization for: {goalTitle}
+            </CardDescription>
+          </div>
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => router.push(`/dashboard?goalId=${encodeURIComponent(goalId)}`)}
+            className="min-h-[44px] min-w-[44px]"
+            title="Back to Dashboard"
+          >
+            <Home className="h-4 w-4" />
+          </Button>
+        </div>
       </CardHeader>
       <CardContent className="space-y-6">
         {/* Legend */}
@@ -317,8 +370,11 @@ export function BlueprintContent({ goalId, goalTitle }: BlueprintContentProps) {
                         milestoneIndex
                       );
                       const isActivating = activatingMilestone === milestone.id;
+                      // ACTIVE milestones should always be clickable (to view jobs), regardless of locking
+                      // Locking only prevents activating new milestones, not clicking already-active ones
                       const isClickable =
-                        !isLocked && !milestoneLocked && milestone.status !== "COMPLETED";
+                        milestone.status === "ACTIVE" ||
+                        (!isLocked && !milestoneLocked && milestone.status !== "COMPLETED");
 
                       return (
                         <button

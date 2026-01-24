@@ -11,7 +11,7 @@ Foundation built and authentication working
 - Schema verification script available (`npm run verify-schema`)
 - TypeScript types fully aligned with database schema
 - Database operation helper types (Insert/Update) available for all tables
-- Integered With LLM(Deepseek) and pass the test of classifier function.
+- Integred With LLM(Deepseek) and pass the test of classifier function.
 - Implemented feature2.2
 - Finished feature 2.3  **Stress Test Generator (Logic)**
 - Finished feature 2.5 **Scoring & Decision (Logic)** 
@@ -25,6 +25,7 @@ Foundation built and authentication working
 - Implemented feature3.4 Blueprint Renderer.
 - Implemented feature3.5 **Cluster Gen**
 - Achieve the Milestone 3: The Adaptive Architect (Scoping & Planning)
+- Achieve the Milestone4: The Action Engine
 
 ## Migration Status:
 - ✅ Migration file: `project/supabase/migrations/001_initial_schema.sql`

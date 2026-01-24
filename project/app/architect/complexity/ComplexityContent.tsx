@@ -12,6 +12,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import type { Complexity } from "@/types/volition";
+import { Home } from "lucide-react";
 
 interface ComplexityContentProps {
   goalId: string;
@@ -75,10 +76,23 @@ export function ComplexityContent({ goalId, goalTitle }: ComplexityContentProps)
     return (
       <Card className="w-full max-w-4xl">
         <CardHeader>
-          <CardTitle>Complexity Estimator</CardTitle>
-          <CardDescription>
-            Analyzing complexity for: {goalTitle}
-          </CardDescription>
+          <div className="flex items-start justify-between">
+            <div className="flex-1">
+              <CardTitle>Complexity Estimator</CardTitle>
+              <CardDescription>
+                Analyzing complexity for: {goalTitle}
+              </CardDescription>
+            </div>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => router.push(`/dashboard?goalId=${encodeURIComponent(goalId)}`)}
+              className="min-h-[44px] min-w-[44px]"
+              title="Back to Dashboard"
+            >
+              <Home className="h-4 w-4" />
+            </Button>
+          </div>
         </CardHeader>
         <CardContent>
           <div className="flex flex-col items-center justify-center py-12">
@@ -96,10 +110,23 @@ export function ComplexityContent({ goalId, goalTitle }: ComplexityContentProps)
     return (
       <Card className="w-full max-w-4xl">
         <CardHeader>
-          <CardTitle>Complexity Estimator</CardTitle>
-          <CardDescription>
-            Error estimating complexity for: {goalTitle}
-          </CardDescription>
+          <div className="flex items-start justify-between">
+            <div className="flex-1">
+              <CardTitle>Complexity Estimator</CardTitle>
+              <CardDescription>
+                Error estimating complexity for: {goalTitle}
+              </CardDescription>
+            </div>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => router.push(`/dashboard?goalId=${encodeURIComponent(goalId)}`)}
+              className="min-h-[44px] min-w-[44px]"
+              title="Back to Dashboard"
+            >
+              <Home className="h-4 w-4" />
+            </Button>
+          </div>
         </CardHeader>
         <CardContent>
           <div className="rounded-md bg-red-50 p-3 text-sm text-red-800 dark:bg-red-900/20 dark:text-red-400">
@@ -124,10 +151,23 @@ export function ComplexityContent({ goalId, goalTitle }: ComplexityContentProps)
   return (
     <Card className="w-full max-w-4xl">
       <CardHeader>
-        <CardTitle>Complexity Estimator</CardTitle>
-        <CardDescription>
-          Complexity analysis complete for: {goalTitle}
-        </CardDescription>
+        <div className="flex items-start justify-between">
+          <div className="flex-1">
+            <CardTitle>Complexity Estimator</CardTitle>
+            <CardDescription>
+              Complexity analysis complete for: {goalTitle}
+            </CardDescription>
+          </div>
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => router.push(`/dashboard?goalId=${encodeURIComponent(goalId)}`)}
+            className="min-h-[44px] min-w-[44px]"
+            title="Back to Dashboard"
+          >
+            <Home className="h-4 w-4" />
+          </Button>
+        </div>
       </CardHeader>
       <CardContent className="space-y-6">
         {/* Size Badge */}

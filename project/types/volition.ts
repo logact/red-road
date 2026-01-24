@@ -34,6 +34,15 @@ export interface Complexity {
 export type UserBackgroundLevel = "BEGINNER" | "INTERMEDIATE" | "ADVANCED" | "EXPERT";
 
 /**
+ * User energy state for the Action Engine.
+ * Used to filter and prioritize jobs based on current energy level.
+ * - HIGH: High energy, can handle Deep Work tasks
+ * - MED: Medium energy, can handle Anchor and Quick Win tasks
+ * - LOW: Low energy, only Quick Win tasks
+ */
+export type UserState = "HIGH" | "MED" | "LOW";
+
+/**
  * Scope definition data structure.
  * Stored as JSONB in the goals.scope column.
  * 
@@ -63,6 +72,18 @@ export type JobType = "QUICK_WIN" | "DEEP_WORK" | "ANCHOR";
 export type JobStatus = "PENDING" | "ACTIVE" | "COMPLETED" | "FAILED";
 
 /**
+ * Work session interface for tracking job execution time.
+ * Each session represents a period of active work on a job.
+ * 
+ * @property start - ISO timestamp when the session started
+ * @property end - ISO timestamp when the session ended, or null if currently active
+ */
+export interface WorkSession {
+  start: string; // ISO timestamp
+  end: string | null; // ISO timestamp or null if active
+}
+
+/**
  * Trial task status values.
  * Used for the 3-7 day micro-plan tasks generated during the gatekeeper phase.
  */
@@ -83,6 +104,7 @@ export interface Job {
   status: JobStatus;
   failure_count: number;
   deadline: string | null;
+  work_sessions: WorkSession[];
   created_at: string;
 }
 
@@ -101,9 +123,10 @@ export interface JobCluster {
 
 /**
  * Milestone status values.
+ * PENDING_VERIFICATION indicates all jobs are completed and waiting for user verification.
  * QUARANTINE indicates a stalled milestone (14+ days inactive).
  */
-export type MilestoneStatus = "PENDING" | "ACTIVE" | "COMPLETED" | "QUARANTINE";
+export type MilestoneStatus = "PENDING" | "ACTIVE" | "PENDING_VERIFICATION" | "COMPLETED" | "QUARANTINE";
 
 /**
  * Milestone interface for application logic.
@@ -116,6 +139,7 @@ export interface Milestone {
   phase_id: string;
   title: string;
   status: MilestoneStatus;
+  acceptance_criteria: string | null;
   created_at: string;
 }
 
@@ -207,6 +231,7 @@ export interface TrialTask {
  * - ACTIVE: Architecture complete, in execution phase
  * - COMPLETED: Goal finished
  * - QUARANTINE: Stalled goal (14+ days inactive)
+ * - FAILED: User gave up on the goal (Feature 5.5)
  */
 export type GoalStatus =
   | "PENDING_SCOPE"
@@ -214,7 +239,8 @@ export type GoalStatus =
   | "PLANNING"
   | "ACTIVE"
   | "COMPLETED"
-  | "QUARANTINE";
+  | "QUARANTINE"
+  | "FAILED";
 
 /**
  * Goal interface for application logic.
@@ -278,6 +304,7 @@ export interface MilestoneRow {
   phase_id: string;
   title: string;
   status: MilestoneStatus;
+  acceptance_criteria: string | null;
   created_at: string;
 }
 
@@ -305,6 +332,11 @@ export interface JobRow {
   status: JobStatus;
   failure_count: number;
   deadline: string | null;
+  work_sessions: WorkSession[];
+  failure_history: Array<{
+    timestamp: string;
+    reason: string;
+  }>;
   created_at: string;
 }
 

@@ -144,6 +144,7 @@ export async function generateBlueprint(
     phase_id: string;
     title: string;
     status: "PENDING";
+    acceptance_criteria: string;
   }> = [];
 
   for (let i = 0; i < blueprint.length; i++) {
@@ -163,6 +164,7 @@ export async function generateBlueprint(
         phase_id: insertedPhase.id,
         title: milestone.title,
         status: "PENDING",
+        acceptance_criteria: milestone.acceptance_criteria,
       });
     }
   }

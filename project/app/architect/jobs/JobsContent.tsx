@@ -13,6 +13,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import type { JobClusterRow, JobRow, JobType } from "@/types/volition";
+import { Home } from "lucide-react";
 
 interface JobsContentProps {
   goalId: string;
@@ -119,8 +120,21 @@ export function JobsContent({
     return (
       <Card className="w-full max-w-4xl">
         <CardHeader>
-          <CardTitle>Jobs</CardTitle>
-          <CardDescription>Loading jobs for milestone...</CardDescription>
+          <div className="flex items-start justify-between">
+            <div className="flex-1">
+              <CardTitle>Jobs</CardTitle>
+              <CardDescription>Loading jobs for milestone...</CardDescription>
+            </div>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => router.push(`/dashboard?goalId=${encodeURIComponent(goalId)}`)}
+              className="min-h-[44px] min-w-[44px]"
+              title="Back to Dashboard"
+            >
+              <Home className="h-4 w-4" />
+            </Button>
+          </div>
         </CardHeader>
         <CardContent>
           <div className="flex items-center justify-center py-8">
@@ -141,12 +155,25 @@ export function JobsContent({
               Goal: {goalTitle}
             </CardDescription>
           </div>
-          <Button
-            onClick={() => router.push(`/architect/blueprint?goalId=${encodeURIComponent(goalId)}`)}
-            variant="outline"
-          >
-            ← Back to Blueprint
-          </Button>
+          <div className="flex gap-2">
+            <Button
+              onClick={() => router.push(`/architect/blueprint?goalId=${encodeURIComponent(goalId)}`)}
+              variant="outline"
+              size="sm"
+              className="min-h-[44px]"
+            >
+              ← Blueprint
+            </Button>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => router.push(`/dashboard?goalId=${encodeURIComponent(goalId)}`)}
+              className="min-h-[44px] min-w-[44px]"
+              title="Back to Dashboard"
+            >
+              <Home className="h-4 w-4" />
+            </Button>
+          </div>
         </div>
       </CardHeader>
       <CardContent>

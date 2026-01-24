@@ -121,14 +121,19 @@ _Updated to handle variable scale via 'Duration-Based Decomposition'._
 
 ### Module E: The Recalibrator (The Self-Healing Loop)
 
-- **Objective:** Fix plans when execution fails.
-    
-- **Level 1 (Tactical):** Reschedule.
-    
-- **Level 2 (Structural):** If a task fails 3x, **explode** it into smaller sub-tasks.
-    
-- **Level 3 (Strategic):** If a Milestone stalls for 14 days, suggest moving to Incubator (Quarantine).
-    
+**Objective:** Fix plans when execution fails.
+
+#### process
+1. When user failed to give user following choice:
+	1. Try next time: the system will
+		1. Record these fail record(record failed note),
+		2. Upgrade the job's level of difficulty
+		3. Change the job's state to active wait user's next try
+	2. Change the content of job: the system will
+		1. review the change reason(user input) and give opinion to user insist on the job or change the content of job.
+		2. if user confirm to change the content of job ,the system should regenerate the job to replace the current job and wait user's confirm ,the user can select regenerate the content of the job until confirm the new content job.
+	3. Give up the goal
+		1. user mark the goal's status to failed.
 
 ---
 

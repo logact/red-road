@@ -1,5 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
+import { DashboardShell } from "@/components/volition/engine/DashboardShell";
 
 export default async function DashboardLayout({
   children,
@@ -15,5 +16,5 @@ export default async function DashboardLayout({
     redirect("/auth/login");
   }
 
-  return <>{children}</>;
+  return <DashboardShell>{children}</DashboardShell>;
 }

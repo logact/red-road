@@ -10,7 +10,7 @@
           {
             "id": "1433207da006d087",
             "type": "tabs",
-            "dimension": 56.902002107481565,
+            "dimension": 43.62486828240253,
             "children": [
               {
                 "id": "54896c8f6eb40450",
@@ -40,12 +40,13 @@
                   "title": "cur-status"
                 }
               }
-            ]
+            ],
+            "currentTab": 1
           },
           {
             "id": "0c484be5d8b95f4a",
             "type": "tabs",
-            "dimension": 43.09799789251844,
+            "dimension": 56.37513171759747,
             "children": [
               {
                 "id": "c4ac4886896e8754",
@@ -241,20 +242,21 @@
   },
   "active": "0dd1d7839d6d7597",
   "lastOpenFiles": [
-    "docs/prd.md",
-    "docs/features.md",
-    "docs/process.md",
+    "project/components/volition/engine/JobMutationDialog.tsx",
+    "project/supabase/migrations/007_add_failed_status_to_goals.sql",
+    "project/lib/ai/job-mutator.ts",
+    "project/lib/actions/job-mutator.ts",
+    "project/lib/ai/job-negotiator.ts",
+    "project/supabase/migrations/007_add_failure_history_to_jobs.sql",
+    "project/lib/actions/job-negotiator.ts",
+    "project/lib/actions/job-retry.ts",
     "context/cur-status.md",
-    "project/app/architect/jobs/JobsContent.tsx",
-    "project/app/architect/jobs/page.tsx",
-    "project/app/architect/jobs",
-    "project/lib/actions/jobs.ts",
-    "project/lib/actions/job-atomizer.ts",
-    "project/lib/ai/job-atomizer.ts",
-    "project/app/architect/blueprint/page.tsx",
-    "project/app/architect/blueprint/BlueprintContent.tsx",
-    "project/app/architect/blueprint",
-    "project/lib/actions/blueprint.ts",
+    "project/components/volition/engine/FailureInterceptorDialog.tsx",
+    "docs/features.md",
+    "docs/prd.md",
+    "project/supabase/migrations/006_add_pending_verification_to_milestones.sql",
+    "project/components/volition/engine/MilestoneVerificationDialog.tsx",
+    "docs/process.md",
     "context/cur-feature.md",
     "project/node_modules/@emnapi/wasi-threads/README.md",
     "project/node_modules/form-data-encoder/readme.md",
